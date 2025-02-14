@@ -1,19 +1,31 @@
 @host = http://localhost:3000
 
- GET {{host}}/api/groups
+ GET {{host}}/api/users
 
 
 ###
-GET {{host}}/api/groups/1
-
-###
-GET {{host}}/api/groups/viaje
-
-###
-GET {{host}}/api/products/67a605f6c628235d857a3a8f
-
+GET {{host}}/api/users/1
 ###
 GET {{host}}/api/users/name/lola
 
 ###
-GET {{host}}/api/users/1
+POST {{host}}/api/users/create
+Content-Type: application/json
+
+{
+    "username": "lola",
+    "mail": "lola1@gmail.com",
+    "password": "12345"
+}
+###
+PUT {{host}}/api/users/3
+Content-Type: application/json
+
+{
+    "username": "lola",
+    "mail": "lola.robles@gmail.com",
+    "password": "12345"
+}
+
+###
+DELETE  {{host}}/api/users/1
