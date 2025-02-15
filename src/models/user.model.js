@@ -11,7 +11,7 @@ const selectById = async (userId) => {
     return result[0]
 }
 const selectByName = async (userName) => {
-    [result] = await pool.query("select * from users where Name = ?", [userName])
+    [result] = await pool.query("select * from users where username = ?", [userName])
     if (result.length === 0) return null
     return result[0]
 }
