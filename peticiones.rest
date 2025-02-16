@@ -1,15 +1,15 @@
 @host = http://localhost:3000
 
-GET {{host}}/api/teams
+GET {{host}}/api/users
 
 
 ###
-GET {{host}}/api/teams/1
+GET {{host}}/api/users/1
 ###
-GET {{host}}/api/teams/name/lola
+GET {{host}}/api/users/name/carlos
 
 ###
-POST {{host}}/api/teams/create
+POST {{host}}/api/users/create
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
     "password": "12345"
 }
 ###
-PUT {{host}}/api/teams/3
+PUT {{host}}/api/users/3
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE  {{host}}/api/teams/3
+DELETE  {{host}}/api/users/3
 
 ###############################################################
 
@@ -40,7 +40,7 @@ GET {{host}}/api/teams
 ###
 GET {{host}}/api/teams/1
 ###
-GET {{host}}/api/teams/name/viaje
+GET {{host}}/api/teams/name/gym
 
 ###
 POST {{host}}/api/teams/create
@@ -48,11 +48,45 @@ Content-Type: application/json
 
 {
     "name": "cena",
-    "description": "cena de amigos"
-    
+    "description": "cena de amigos",
+    "category": "comida"
 }
 ###
 PUT {{host}}/api/teams/1
+Content-Type: application/json
+
+{
+     "name": "viaje a Barcelona",
+    "description": "viaje de trabajo"
+}
+
+###
+DELETE  {{host}}/api/teams/1
+
+##########################################
+
+GET {{host}}/api/expenses
+
+###
+GET {{host}}/api/expenses/1
+###
+GET {{host}}/api/expenses/team/1
+###
+GET {{host}}/api/expenses/name/cena
+
+###
+POST {{host}}/api/expenses/create
+Content-Type: application/json
+
+{
+    "name": "salida",
+    "amount": "20",
+    "UserIDCreator": 1,
+    "teamId":1
+    
+}
+###
+PUT {{host}}/api/expenses/1
 Content-Type: application/json
 
 {
