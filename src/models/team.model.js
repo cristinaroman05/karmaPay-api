@@ -15,17 +15,18 @@ const selectByName = async (teamName) => {
     if (result.length === 0) return null
     return result[0]
 }
-const addTeam = async ({ name, description }) => {
-    const [result] = await pool.query("insert into teams (name, description, img) values(?, ?, ?)", [name, description, teamImage])
+const addTeam = async ({ name, description, category }) => {
+    const [result] = await pool.query("insert into teams (name, description, category, img) values(?, ?, ?, ?)", [name, description, category, teamImage])
     return result
 }
-const updateById = async (teamId, { name, description, img }) => {
+const updateById = async (teamId, { name, description, category, img }) => {
     const [result] = await pool.query(
-        "update teams set name = ?, description = ?, img = ? where id = ?",
+        "update teams set name = ?, description = ?, img = ?, category = ? where id = ?",
         [
             name,
             description,
             img,
+            category,
             teamId
         ]
     )
