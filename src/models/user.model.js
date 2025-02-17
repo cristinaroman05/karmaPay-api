@@ -15,6 +15,11 @@ const selectByName = async (userName) => {
     if (result.length === 0) return null
     return result[0]
 }
+const selectByMail = async (mail) => {
+    [result] = await pool.query("select * from users where mail like ?", [`%${mail}%`])
+    if (result.length === 0) return null
+    return result[0]
+}
 const addUser = async ({ username, mail, password }) => {
     const [result] = await pool.query("insert into users (username, mail, password, img) values(?, ?, ?, ?)", [username, mail, password, profileImage])
     return result
@@ -37,4 +42,4 @@ const deleteById = async (userId) => {
 }
 
 
-module.exports = { selectAll, selectById, selectByName, addUser, updateById, deleteById }
+module.exports = { selectAll, selectById, selectByName, selectByMail, addUser, updateById, deleteById }

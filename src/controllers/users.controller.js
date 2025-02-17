@@ -33,6 +33,18 @@ const getByName = async (req, res, next) => {
         next(error)
     }
 }
+const getByMail = async (req, res, next) => {
+    const { mail } = req.params
+    try {
+        const user = await User.selectByMail(mail)
+        if (!user) {
+            res.status(404).json({ message: 'El email del usuario no existe' })
+        }
+        res.json(user)
+    } catch (error) {
+        next(error)
+    }
+}
 const create = async (req, res, next) => {
     try {
         const result = await User.addUser(req.body);
@@ -63,4 +75,4 @@ const deleteOne = async (req, res, next) => {
     }
 }
 
-module.exports = { getAll, getById, getByName, create, updateOne, deleteOne }
+module.exports = { getAll, getById, getByName, getByMail, create, updateOne, deleteOne }

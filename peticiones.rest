@@ -81,18 +81,18 @@ Content-Type: application/json
 {
     "name": "salida",
     "amount": "20",
-    "UserIDCreator": 1,
+    "userIdCreator": 1,
     "teamId":1
     
 }
 ###
-PUT {{host}}/api/expenses/1
+PUT {{host}}/api/expenses/4
 Content-Type: application/json
 
 {
-     "name": "viaje a Barcelona",
-    "description": "viaje de trabajo"
+    "name": "salida",
+    "amount": "20"
 }
 
 ###
-DELETE  {{host}}/api/teams/1
+DELETE  {{host}}/api/expenses/4
