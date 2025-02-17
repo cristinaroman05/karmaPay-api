@@ -8,7 +8,7 @@ router.get('/name/:userName', getByName)
 router.get('/mail/:mail', getByMail)
 
 router.post('/create', create)
-router.put('/:userId', updateOne)
+router.put('/', updateOne)
 router.delete('/:userId', deleteOne)
 
 

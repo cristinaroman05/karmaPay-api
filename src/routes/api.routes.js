@@ -1,8 +1,9 @@
 const router = require('express').Router();
+const { checkToken } = require('../middlewares/users.middleware')
 
-router.use('/users', require('./api/users.routes'))
-router.use('/teams', require('./api/teams.routes'))
-router.use('/expenses', require('./api/expenses.routes'))
+router.use('/users', checkToken, require('./api/users.routes'))
+router.use('/teams', checkToken, require('./api/teams.routes'))
+router.use('/expenses', checkToken, require('./api/expenses.routes'))
 
 router.use('/login', require('./api/login.routes'))
 router.use('/register', require('./api/register.routes'))

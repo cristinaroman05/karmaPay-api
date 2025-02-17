@@ -6,7 +6,7 @@ GET {{host}}/api/users
 ###
 GET {{host}}/api/users/1
 ###
-GET {{host}}/api/users/name/carlos
+GET {{host}}/api/users/mail/fede@gmail.com
 
 ###
 POST {{host}}/api/users/create
@@ -18,12 +18,13 @@ Content-Type: application/json
     "password": "12345"
 }
 ###
-PUT {{host}}/api/users/3
+PUT {{host}}/api/users/
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 
 {
-    "username": "lola",
-    "mail": "lola.robles@gmail.com",
+    "username": "federico",
+    "mail": "fede@gmail.com",
     "password": "12345"
 }
 
@@ -96,3 +97,22 @@ Content-Type: application/json
 
 ###
 DELETE  {{host}}/api/expenses/4
+
+###
+POST {{host}}/api/register
+Content-Type: application/json
+
+{
+    "username": "pepe",
+    "mail": "pepe@gmail.com",
+    "password": "12345"
+}
+###
+POST {{host}}/api/login
+Content-Type: application/json
+
+{
+    
+    "mail": "fede@gmail.com",
+    "password": "12345"
+}

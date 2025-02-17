@@ -55,8 +55,9 @@ const create = async (req, res, next) => {
     }
 }
 const updateOne = async (req, res, next) => {
+    const userId = req.user.Id
+
     try {
-        const { userId } = req.params
         await User.updateById(userId, req.body)
         const userUpdated = await User.selectById(userId)
         res.json({ message: 'Usuario actualizado', userUpdated })
