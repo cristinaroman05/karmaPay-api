@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
-
+const Team = require('../models/team.model')
 const checkToken = async (req, res, next) => {
     /* const token = req.headers['authorization']
     let payload;
@@ -20,13 +20,15 @@ const checkToken = async (req, res, next) => {
     req.user = { Id: 1 }
     next()
 }
-const checkAdmin = async (req, res, next) => {
-    const role = req.user.Role
-    if (role !== 'owner') {
+const checkOwner = async (req, res, next) => {
+    const userId = Number(req.user.Id)
+    const team = await Team.selectById(Number(req.params.teamId))
+    const ownerId = team.Owner
+
+    if (ownerId !== userId) {
         return res.status(403).json({ message: 'No estás autorizado' })
     }
-
     next()
 }
 
-module.exports = { checkToken, checkAdmin }
+module.exports = { checkToken, checkOwner }

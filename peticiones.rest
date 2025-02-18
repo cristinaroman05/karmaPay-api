@@ -58,7 +58,8 @@ Content-Type: application/json
 
 {
      "name": "viaje a Barcelona",
-    "description": "viaje de trabajo"
+    "description": "viaje de trabajo",
+    "category": "comida"
 }
 
 ###
@@ -71,7 +72,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTcz
 ###
 GET {{host}}/api/expenses/1
 ###
-GET {{host}}/api/expenses/team/1
+GET {{host}}/api/expenses/user/1
 ###
 GET {{host}}/api/expenses/name/cena
 
@@ -99,7 +100,7 @@ Content-Type: application/json
 DELETE  {{host}}/api/expenses/4
 
 ###
-POST {{host}}/api/register
+POST {{host}}/api/users/register
 Content-Type: application/json
 
 {
@@ -108,11 +109,11 @@ Content-Type: application/json
     "password": "12345"
 }
 ###
-POST {{host}}/api/login
+POST {{host}}/api/users/login
 Content-Type: application/json
 
 {
     
-    "mail": "fede@gmail.com",
+    "mail": "pepe@gmail.com",
     "password": "12345"
 }

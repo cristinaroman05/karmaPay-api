@@ -34,8 +34,9 @@ const getByName = async (req, res, next) => {
     }
 }
 const create = async (req, res, next) => {
+    const ownerId = req.user.Id;
     try {
-        const result = await Team.addTeam(req.body);
+        const result = await Team.addTeam(req.body, ownerId);
         const newTeam = await Team.selectById(result.insertId);
         res.json(newTeam);
     } catch (error) {
