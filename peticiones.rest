@@ -39,7 +39,7 @@ GET {{host}}/api/teams
 
 
 ###
-GET {{host}}/api/teams/1
+GET {{host}}/api/teams/2
 ###
 GET {{host}}/api/teams/name/gym
 

@@ -30,5 +30,14 @@ const checkOwner = async (req, res, next) => {
     }
     next()
 }
+const checkUserTeam = async (req, res, next) => {
+    const users = await User.selectAll(Number(req.params.teamId))
+    const usersTeam = users.map(user => user.Id)
+    const userIncluded = usersTeam.includes(Number(req.user.Id))
+    if (!userIncluded) {
+        return res.status(403).json({ message: 'No estás autorizado' })
+    }
+    next()
+}
 
-module.exports = { checkToken, checkOwner }
+module.exports = { checkToken, checkOwner, checkUserTeam }
