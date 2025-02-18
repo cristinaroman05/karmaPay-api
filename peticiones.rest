@@ -1,6 +1,6 @@
 @host = http://localhost:3000
 
-GET {{host}}/api/users
+GET {{host}}/api/users/team/1
 
 
 ###
@@ -18,7 +18,7 @@ Content-Type: application/json
     "password": "12345"
 }
 ###
-PUT {{host}}/api/users/
+PUT {{host}}/api/users/update
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 
@@ -67,7 +67,7 @@ DELETE  {{host}}/api/teams/1
 ##########################################
 
 GET {{host}}/api/expenses
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/expenses/1
 ###

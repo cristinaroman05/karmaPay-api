@@ -2,8 +2,9 @@ const User = require('../models/user.model')
 
 
 const getAll = async (req, res, next) => {
+    const { teamId } = req.params
     try {
-        const users = await User.selectAll()
+        const users = await User.selectAll(teamId)
         res.json(users)
     } catch (error) {
         next(error)

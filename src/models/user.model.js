@@ -1,8 +1,8 @@
 const pool = require('../config/db')
 const profileImage = '../images/iconoPerfil.png'
 
-const selectAll = async () => {
-    [result] = await pool.query("select * from users")
+const selectAll = async (teamId) => {
+    [result] = await pool.query("SELECT u.Id, u.Username, u.Mail, u.Img FROM UsersTeams ut JOIN Users u ON ut.UserID = u.Id WHERE ut.TeamID = ?", [teamId])
     return result;
 }
 const selectById = async (userId) => {

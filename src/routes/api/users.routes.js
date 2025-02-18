@@ -2,13 +2,13 @@ const { getAll, getById, getByName, create, updateOne, deleteOne, getByMail } = 
 
 const router = require('express').Router();
 
-router.get('/', getAll)
+router.get('/team/:teamId', getAll)
 router.get('/:userId', getById)
 router.get('/name/:userName', getByName)
 router.get('/mail/:mail', getByMail)
 
 router.post('/create', create)
-router.put('/', updateOne)
+router.put('/update', updateOne)
 router.delete('/:userId', deleteOne)
 
 
