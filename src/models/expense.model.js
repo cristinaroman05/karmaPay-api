@@ -54,11 +54,7 @@ const deleteById = async (expenseId) => {
 }
 
 const selectAllByUser = async (userId) => {
-    const [result] = await pool.query(`
-        SELECT e.* FROM expenses e 
-        JOIN UsersExpenses ue ON e.Id = ue.ExpenseID 
-        WHERE ue.UserID = ?
-    `, [userId]);
+    const [result] = await pool.query("SELECT et.ExpenseID , u.Username, et.Assignation FROM UsersExpenses et JOIN users u ON et.UserID = u.Id WHERE et.UserID = ?", [userId]);
     return result;
 };
 
