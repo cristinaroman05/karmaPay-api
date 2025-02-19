@@ -24,9 +24,7 @@ const getByName = async (req, res, next) => {
     const { expenseName, teamId } = req.params
     try {
         const expense = await Expense.selectByName(expenseName, teamId)
-        if (!expense) {
-            res.status(404).json({ message: 'El nombre del gasto no existe' })
-        }
+
         res.json(expense)
     } catch (error) {
         next(error)
