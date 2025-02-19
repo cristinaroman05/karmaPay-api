@@ -39,5 +39,13 @@ const checkUserTeam = async (req, res, next) => {
     }
     next()
 }
-
-module.exports = { checkToken, checkOwner, checkUserTeam }
+const checkUsersTeam = async (req, res, next) => {
+    const { idgroup } = req.params;
+    const userId = req.user.Id;
+    const users = await User.selectAllByGroup(idgroup);
+    const user = await User.selectById(userId)
+    if (users.contains(user) === false) {
+        return res.status(403).json({ message: `El usuario ${userId} no pertenece a este grupo` })
+    }
+}
+module.exports = { checkToken, checkOwner, checkUsersTeam }

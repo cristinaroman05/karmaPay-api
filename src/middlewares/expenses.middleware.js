@@ -1,7 +1,9 @@
 const Expenses = require('../models/expense.model');
 //     `, [userId]);
 const checkUserIDCreator = async (req, res, next) => {
-    const creator = req.params.id;
+    const { idexpense } = req.params;
+    const expense = await Expenses.selectById(idexpense);
+    const creator = expense.UserIDCreator;
     if (creator !== req.user.id) {
         return res.status(403).json({ message: 'No estás autorizado' })
     }
@@ -24,4 +26,4 @@ const checkExpenseTeam = async (req, res, next) => {
     next()
 }
 
-module.exports = { checkUserIDCreator }
+module.exports = { checkUserIDCreator, checkExpenseTeam }
