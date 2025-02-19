@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 router.get('/', getAll)
 router.get('/:expenseId', getById)
-router.get('/name/:expenseName', getByName)
+router.get('/name/:expenseName/:teamId', getByName)
 router.get('/team/:teamId', getAllByTeam)
 router.get('/user/:userId', getAllByUser)
 

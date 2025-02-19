@@ -33,6 +33,18 @@ const getByName = async (req, res, next) => {
         next(error)
     }
 }
+const getByCategory = async (req, res, next) => {
+    const { category } = req.params
+    try {
+        const team = await Team.selectByCategory(category)
+        if (!team) {
+            res.status(404).json({ message: 'No existe ningún grupo en esa categoría' })
+        }
+        res.json(team)
+    } catch (error) {
+        next(error)
+    }
+}
 const create = async (req, res, next) => {
     const ownerId = req.user.Id;
     try {
@@ -64,4 +76,4 @@ const deleteOne = async (req, res, next) => {
     }
 }
 
-module.exports = { getAll, getById, getByName, create, updateOne, deleteOne }
+module.exports = { getAll, getById, getByName, getByCategory, create, updateOne, deleteOne }

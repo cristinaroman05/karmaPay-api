@@ -6,6 +6,8 @@ GET {{host}}/api/users/team/1
 ###
 GET {{host}}/api/users/1
 ###
+GET {{host}}/api/users/name/alex/1
+###
 GET {{host}}/api/users/mail/fede@gmail.com
 
 ###
@@ -42,6 +44,8 @@ GET {{host}}/api/teams
 GET {{host}}/api/teams/2
 ###
 GET {{host}}/api/teams/name/gym
+###
+GET {{host}}/api/teams/category/comida
 
 ###
 POST {{host}}/api/teams/create
@@ -74,7 +78,7 @@ GET {{host}}/api/expenses/1
 ###
 GET {{host}}/api/expenses/user/1
 ###
-GET {{host}}/api/expenses/name/cena
+GET {{host}}/api/expenses/name/cena/1
 
 ###
 POST {{host}}/api/expenses/create
@@ -83,7 +87,7 @@ Content-Type: application/json
 {
     "name": "salida",
     "amount": "20",
-    "userIdCreator": 1,
+    "userIdCreator": 13,
     "teamId":1
     
 }
@@ -104,8 +108,8 @@ POST {{host}}/api/users/register
 Content-Type: application/json
 
 {
-    "username": "pepe",
-    "mail": "pepe@gmail.com",
+    "username": "alex",
+    "mail": "alex@gmail.com",
     "password": "12345"
 }
 ###
@@ -114,6 +118,6 @@ Content-Type: application/json
 
 {
     
-    "mail": "pepe@gmail.com",
+    "mail": "alex@gmail.com",
     "password": "12345"
 }

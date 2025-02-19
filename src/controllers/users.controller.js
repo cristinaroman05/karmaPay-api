@@ -23,9 +23,9 @@ const getById = async (req, res, next) => {
     }
 }
 const getByName = async (req, res, next) => {
-    const { userName } = req.params
+    const { userName, teamId } = req.params
     try {
-        const user = await User.selectByName(userName)
+        const user = await User.selectByName(userName, teamId)
         if (!user) {
             res.status(404).json({ message: 'El nombre del usuario no existe' })
         }

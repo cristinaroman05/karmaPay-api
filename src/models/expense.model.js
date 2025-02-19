@@ -24,10 +24,11 @@ const selectById = async (expenseId) => {
     if (result.length === 0) return null;
     return result[0];
 };
-const selectByName = async (expenseName) => {
-    [result] = await pool.query("select * from expenses where name LIKE ?", [`%${expenseName}%`])
+const selectByName = async (expenseName, teamId) => {
+    [result] = await pool.query("SELECT * FROM expenses WHERE name LIKE ? AND TeamID = ?",
+        [`%${expenseName}%`, teamId])
     if (result.length === 0) return null
-    return result[0]
+    return result
 }
 const addExpense = async ({ name, amount, userIdCreator, teamId }) => {
     const [result] = await pool.query(

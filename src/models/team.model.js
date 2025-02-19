@@ -15,6 +15,11 @@ const selectByName = async (teamName) => {
     if (result.length === 0) return null
     return result[0]
 }
+const selectByCategory = async (category) => {
+    [result] = await pool.query("select * from teams where category = ?", [category])
+    if (result.length === 0) return null
+    return result
+}
 const addTeam = async ({ name, description, category }, ownerId) => {
     const [result] = await pool.query("insert into teams (name, description, category, img, owner) values(?, ?, ?, ?, ?)", [name, description, category, teamImage, ownerId])
     return result
@@ -38,4 +43,4 @@ const deleteById = async (teamId) => {
 }
 
 
-module.exports = { selectAll, selectById, selectByName, addTeam, updateById, deleteById }
+module.exports = { selectAll, selectById, selectByName, selectByCategory, addTeam, updateById, deleteById }

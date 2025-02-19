@@ -6,17 +6,18 @@ const selectAll = async (teamId) => {
     return result;
 }
 const selectById = async (userId) => {
-    [result] = await pool.query("select * from users where Id = ?", [userId])
+    [result] = await pool.query("SELECT * FROM users WHERE Id = ?", [userId])
     if (result.length === 0) return null
     return result[0]
 }
-const selectByName = async (userName) => {
-    [result] = await pool.query("select * from users where username like ?", [`%${userName}%`])
+const selectByName = async (userName, teamId) => {
+    [result] = await pool.query("SELECT u.* FROM users u JOIN usersteams ut ON u.Id = ut.UserID Join teams t ON ut.TeamID = t.Id WHERE u.username LIKE ? AND t.id = ? ", [`%${userName}%`, teamId])
     if (result.length === 0) return null
-    return result[0]
+    return result
+
 }
 const selectByMail = async (mail) => {
-    [result] = await pool.query("select * from users where mail like ?", [`%${mail}%`])
+    [result] = await pool.query("SELECT * FROM users WHERE mail LIKE ?", [`%${mail}%`])
     if (result.length === 0) return null
     return result[0]
 }
@@ -26,7 +27,7 @@ const addUser = async ({ username, mail, password }) => {
 }
 const updateById = async (userId, { username, mail, password }) => {
     const [result] = await pool.query(
-        "update users set username = ?, mail = ?, password = ? where id = ?",
+        "update users set username = ?, mail = ?, password = ? WHERE id = ?",
         [
             username,
             mail,
@@ -37,7 +38,7 @@ const updateById = async (userId, { username, mail, password }) => {
     return result
 }
 const deleteById = async (userId) => {
-    const [result] = await pool.query("delete from users where id = ?", [userId])
+    const [result] = await pool.query("delete from users WHERE id = ?", [userId])
     return result
 }
 

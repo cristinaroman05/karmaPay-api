@@ -6,7 +6,7 @@ const router = require('express').Router();
 
 router.get('/team/:teamId', getAll)
 router.get('/:userId', getById)
-router.get('/name/:userName', getByName)
+router.get('/name/:userName/:teamId', getByName)
 router.get('/mail/:mail', getByMail)
 
 router.post('/create', create)
