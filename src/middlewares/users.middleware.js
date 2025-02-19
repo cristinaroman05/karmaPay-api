@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user.model')
 const Team = require('../models/team.model')
 const checkToken = async (req, res, next) => {
-    /* const token = req.headers['authorization']
+    const token = req.headers['authorization']
     let payload;
     if (!token) {
         return res.status(403).json({ message: 'Debes incluir la cabecera authorization' })
@@ -16,8 +16,8 @@ const checkToken = async (req, res, next) => {
     if (!user) {
         return res.status(403).json({ message: 'El usuario no es correcto' })
     }
-    req.user = user; */
-    req.user = { Id: 1 }
+    req.user = user;
+
     next()
 }
 const checkOwner = async (req, res, next) => {
