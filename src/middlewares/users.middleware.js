@@ -33,7 +33,7 @@ const checkUsersTeam = async (req, res, next) => {
     const userId = req.user.Id;
     const users = await User.selectAllByGroup(idgroup);
     const user = await User.selectById(userId)
-    if (users.Contains(user) === false) {
+    if (users.contains(user) === false) {
         return res.status(403).json({ message: `El usuario ${userId} no pertenece a este grupo` })
     }
 
