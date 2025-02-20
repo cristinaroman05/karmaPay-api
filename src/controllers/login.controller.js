@@ -15,7 +15,7 @@ const login = async (req, res, next) => {
     res.json({
         success: 'Login correcto', token: jwt.sign({
             userId: user.Id,
-            userRole: user.Role
+
         }, 'clave')
     });
 }

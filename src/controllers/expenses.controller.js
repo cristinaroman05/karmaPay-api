@@ -52,11 +52,13 @@ const getAllByTeam = async (req, res) => {
     }
 };
 const create = async (req, res, next) => {
-    const { name, amount, userIdCreator, teamId } = req.body;
+    const { name, amount, teamId } = req.body;
+    const userIdCreator = req.user.Id
+    console.log(req.body)
     try {
 
-        if (!userIdCreator || !teamId) {
-            return res.status(400).json({ message: "UserIDCreator y TeamID son obligatorios" });
+        if (!teamId) {
+            return res.status(400).json({ message: "TeamID es obligatorio" });
         }
         const result = await Expense.addExpense({ name, amount, userIdCreator, teamId });
         const newExpense = await Expense.selectById(result.insertId);

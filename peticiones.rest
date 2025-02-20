@@ -87,7 +87,6 @@ Content-Type: application/json
 {
     "name": "salida",
     "amount": "20",
-    "userIdCreator": 13,
     "teamId":1
     
 }
