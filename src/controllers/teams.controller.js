@@ -1,5 +1,6 @@
 const Team = require('../models/team.model')
-
+const Expense = require('../models/expense.model')
+const User = require('../models/user.model')
 
 const getAll = async (req, res, next) => {
     try {
@@ -16,7 +17,8 @@ const getById = async (req, res, next) => {
         if (!team) {
             res.status(404).json({ message: 'El id del grupo no existe' })
         }
-        res.json(team)
+        const expenses = await Expense.selectAllByUser(teamId)
+        res.json({ team, expenses })
     } catch (error) {
         next(error)
     }
@@ -55,6 +57,16 @@ const create = async (req, res, next) => {
         next(error);
     }
 }
+const createUserTeam = async (req, res, next) => {
+    const { userId, teamId } = req.body
+    try {
+        await Team.addUserTeam(userId, teamId);
+        const userAdded = await User.selectAll(teamId)
+        res.json(userAdded);
+    } catch (error) {
+        next(error);
+    }
+}
 const updateOne = async (req, res, next) => {
     try {
         const { teamId } = req.params
@@ -76,4 +88,4 @@ const deleteOne = async (req, res, next) => {
     }
 }
 
-module.exports = { getAll, getById, getByName, getByCategory, create, updateOne, deleteOne }
+module.exports = { getAll, getById, getByName, getByCategory, create, createUserTeam, updateOne, deleteOne }

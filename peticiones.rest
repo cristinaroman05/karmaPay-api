@@ -1,7 +1,8 @@
 @host = http://localhost:3000
 
-GET {{host}}/api/users/team/1
 
+GET {{host}}/api/users/team/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 
 ###
 GET {{host}}/api/users/1
@@ -41,7 +42,8 @@ GET {{host}}/api/teams
 
 
 ###
-GET {{host}}/api/teams/2
+GET {{host}}/api/teams/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/teams/name/gym
 ###
@@ -75,20 +77,27 @@ GET {{host}}/api/expenses
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/expenses/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/expenses/user/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/expenses/name/cena/1
 
 ###
 POST {{host}}/api/expenses/create
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJpYXQiOjE3NDAxMjg1MTN9.qNNfykllI82WD3oN-WkABeK9bW4i2VkBgYezquMHZzs
 
 {
-    "name": "salida",
-    "amount": "20",
-    "teamId":1
-    
+  "name": "salida",
+  "amount": 20,
+  "teamId": 1,
+  "assignations": [
+    { "Username": "AlexCastet", "Assignation": 10, "UserId": 1 },
+    { "Username": "Lucrecia", "Assignation": 5, "UserId": 2 },
+    { "Username": "carlos_valenzuela", "Assignation": 5, "UserId": 3  }
+  ]
 }
 ###
 PUT {{host}}/api/expenses/4
