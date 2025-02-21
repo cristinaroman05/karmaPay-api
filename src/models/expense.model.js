@@ -37,7 +37,11 @@ const addExpense = async ({ name, amount, userIdCreator, teamId }) => {
     );
     return result;
 };
-
+const addAssignation = async ({ assignation, expenseId, userId }) => {
+    const [result] = await pool.query("INSERT INTO UsersExpenses (Assignation, ExpenseID, UserID) VALUES (?, ?, ?)",
+        [assignation, expenseId, userId,])
+    return result;
+}
 const updateById = async (expenseId, { name, amount }) => {
     const [result] = await pool.query(
         "update expenses set name = ?, amount = ? where id = ?",
@@ -64,4 +68,4 @@ const selectAllByTeam = async (teamId) => {
     return result
 };
 
-module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, updateById, deleteById }
+module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, addAssignation, updateById, deleteById }
