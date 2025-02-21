@@ -75,5 +75,16 @@ const deleteOne = async (req, res, next) => {
         next(error)
     }
 }
-
-module.exports = { getAll, getById, getByName, getByCategory, create, updateOne, deleteOne }
+const getOwnerById = async (req, res, next) => {
+    const { teamId } = req.params
+    try {
+        const Owner = await Team.getOwnerById(teamId)
+        if (!Owner) {
+            res.status(404).json({ message: 'El id del grupo no existe' })
+        }
+        res.json(Owner)
+    } catch (error) {
+        next(error)
+    }
+}
+module.exports = { getAll, getById, getByName, getByCategory, create, updateOne, deleteOne, getOwnerById }

@@ -41,6 +41,10 @@ const deleteById = async (teamId) => {
     const [result] = await pool.query("delete from teams where id = ?", [teamId])
     return result
 }
+const getOwnerById = async (teamId) => {
+    [result] = await pool.query("select Owner from teams where Id = ?", [teamId])
+    if (result.length === 0) return null
+    return result[0]
+}
 
-
-module.exports = { selectAll, selectById, selectByName, selectByCategory, addTeam, updateById, deleteById }
+module.exports = { selectAll, selectById, selectByName, selectByCategory, addTeam, updateById, deleteById, getOwnerById}
