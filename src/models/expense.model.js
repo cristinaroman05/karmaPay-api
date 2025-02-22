@@ -68,4 +68,9 @@ const selectAllByTeam = async (teamId) => {
     return result
 };
 
-module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, addAssignation, updateById, deleteById }
+const getDepth = async (userId, teamId) => {
+    const [result] = await pool.query("Select Sum(Amount)*(ue.Assignation /100) as Debes from expenses e Join users u on u.Id = e.UserIDCreator Join teams t on t.Id = e.TeamID join usersexpenses ue on e.Id = ue.ExpenseID and u.Id = ue.UserID where u.Id = ? and t.Id = ? group by ue.Assignation", [userId, teamId]);
+    return result
+};
+
+module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, updateById, deleteById, getDepth };

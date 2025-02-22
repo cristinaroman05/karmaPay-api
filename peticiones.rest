@@ -12,6 +12,8 @@ GET {{host}}/api/users/name/alex/1
 GET {{host}}/api/users/mail/fede@gmail.com
 
 ###
+GET {{host}}/api/expenses/getDepth/3/2
+###
 POST {{host}}/api/users/create
 Content-Type: application/json
 
