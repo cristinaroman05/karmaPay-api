@@ -10,9 +10,9 @@ router.get('/:userId', checkToken, getById)
 router.get('/name/:userName/:teamId', checkToken, getByName)
 router.get('/mail/:mail', checkToken, getByMail)
 
-router.post('/create', create)
+router.post('/create', checkToken, create)
 router.post('/login', login)
-router.post('/register', checkToken, register)
+router.post('/register', register)
 router.put('/update', checkToken, updateOne)
 router.delete('/:userId', checkToken, deleteOne)
 
