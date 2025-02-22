@@ -87,5 +87,14 @@ const deleteOne = async (req, res, next) => {
         next(error)
     }
 }
+const getDepth = async (req, res, next) => {
+    try {
+        const { userId, teamId } = req.params
+        const userdepth = await Expense.getDepth(userId, teamId)
+        res.json({ userdepth})
+    } catch (error) {
+        next(error)
+    }
+}
 
-module.exports = { getAll, getAllByUser, getAllByTeam, getById, getByName, create, updateOne, deleteOne }
+module.exports = { getAll, getAllByUser, getAllByTeam, getById, getByName, create, updateOne, deleteOne, getDepth }
