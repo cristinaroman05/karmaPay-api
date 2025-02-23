@@ -94,7 +94,7 @@ const getOwnerById = async (req, res, next) => {
         if (!Owner) {
             res.status(404).json({ message: 'El id del grupo no existe' })
         }
-        res.json(Owner)
+        res.json(Owner.Owner)
     } catch (error) {
         next(error)
     }
