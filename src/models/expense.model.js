@@ -73,4 +73,4 @@ const getDebt = async (userId, teamId) => {
     return result[0]
 };
 
-module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, updateById, deleteById, getDebt };
+module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, addAssignation, updateById, deleteById, getDebt };
