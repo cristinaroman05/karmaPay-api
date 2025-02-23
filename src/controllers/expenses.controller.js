@@ -51,6 +51,17 @@ const getAllByTeam = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+const getAssignation = async (req, res, next) => {
+    try {
+        const { expenseId } = req.params;
+        const userId = req.user.Id
+        const assignation = await Expense.selectAssignation({ expenseId, userId });
+        res.json(assignation)
+    } catch (error) {
+        next(error);
+    }
+};
 const create = async (req, res, next) => {
     const { name, amount, teamId, assignations } = req.body;
     const userIdCreator = req.user.Id
@@ -102,4 +113,4 @@ const getDebt = async (req, res, next) => {
     }
 }
 
-module.exports = { getAll, getAllByUser, getAllByTeam, getById, getByName, create, updateOne, deleteOne, getDebt }
+module.exports = { getAll, getAllByUser, getAllByTeam, getById, getByName, getAssignation, create, updateOne, deleteOne, getDebt }

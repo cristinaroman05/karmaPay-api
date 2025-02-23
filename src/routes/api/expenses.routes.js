@@ -1,10 +1,11 @@
-const { getAll, getById, getByName, create, updateOne, deleteOne, getAllByTeam, getAllByUser, getDebt } = require('../../controllers/expenses.controller');
+const { getAll, getById, getByName, create, updateOne, deleteOne, getAllByTeam, getAllByUser, getDebt, getAssignation } = require('../../controllers/expenses.controller');
 
 
 const router = require('express').Router();
 
 router.get('/', getAll)
 router.get('/:expenseId', getById)
+router.get('/getAssig/:expenseId/', getAssignation)
 router.get('/name/:expenseName/:teamId', getByName)
 router.get('/team/:teamId', getAllByTeam)
 router.get('/user/:userId', getAllByUser)
