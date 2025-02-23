@@ -94,7 +94,9 @@ const getDebt = async (req, res, next) => {
     try {
         const { userId, teamId } = req.params
         const userdebt = await Expense.getDebt(userId, teamId)
-        res.json({ userdebt })
+
+        res.json(userdebt)
+        console.log(userdebt)
     } catch (error) {
         next(error)
     }

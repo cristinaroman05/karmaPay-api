@@ -69,8 +69,17 @@ const selectAllByTeam = async (teamId) => {
 };
 
 const getDebt = async (userId, teamId) => {
-    const [result] = await pool.query("Select Sum(Amount)*(ue.Assignation /100) as Debes from expenses e Join users u on u.Id = e.UserIDCreator Join teams t on t.Id = e.TeamID join usersexpenses ue on e.Id = ue.ExpenseID and u.Id = ue.UserID where u.Id = ? and t.Id = ? group by ue.Assignation", [userId, teamId]);
-    return result[0]
+    const [result] = await pool.query("SELECT ue.UserID, SUM(ue.Assignation) AS Debes FROM expenses e JOIN usersexpenses ue ON e.Id = ue.ExpenseID WHERE e.TeamID = ? and ue.UserId = ? GROUP BY ue.UserID; ", [userId, teamId]);
+    return result
 };
 
 module.exports = { selectAll, selectAllByUser, selectAllByTeam, selectById, selectByName, addExpense, addAssignation, updateById, deleteById, getDebt };
+
+
+//SELECT 
+/* ue.UserID,
+    SUM(e.Amount * (ue.Assignation / 100)) AS Debes 
+FROM expenses e
+JOIN usersexpenses ue ON e.Id = ue.ExpenseID
+WHERE e.TeamID = ?
+    GROUP BY ue.UserID; */
