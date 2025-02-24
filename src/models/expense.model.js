@@ -14,7 +14,7 @@ const selectAll = async () => {
 
 const selectById = async (expenseId) => {
     const [result] = await pool.query(`
-        SELECT e.Id, e.Name, e.Amount, e.CreationDate, 
+        SELECT e.Id, e.Name, e.Amount, e.CreationDate, e.UserIDCreator, 
                u.Username AS Creator, t.Name AS Team 
         FROM expenses e
         JOIN users u ON e.UserIDCreator = u.Id
