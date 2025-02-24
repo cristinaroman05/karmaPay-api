@@ -39,9 +39,7 @@ const getByCategory = async (req, res, next) => {
     const { category } = req.params
     try {
         const team = await Team.selectByCategory(category)
-        if (!team) {
-            res.status(404).json({ message: 'No existe ningún grupo en esa categoría' })
-        }
+
         res.json(team)
     } catch (error) {
         next(error)
