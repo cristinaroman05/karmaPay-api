@@ -3,8 +3,9 @@ const Expense = require('../models/expense.model')
 const User = require('../models/user.model')
 
 const getAll = async (req, res, next) => {
+    const { userId } = req.user.Id
     try {
-        const teams = await Team.selectAll()
+        const teams = await Team.selectAll(userId)
         res.json(teams)
     } catch (error) {
         next(error)

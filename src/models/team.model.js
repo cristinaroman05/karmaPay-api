@@ -1,8 +1,8 @@
 const pool = require('../config/db')
 const teamImage = '../images/team.jpg'
 
-const selectAll = async () => {
-    [result] = await pool.query("select * from teams")
+const selectAll = async (userId) => {
+    [result] = await pool.query("select * from teams where owner = ?", [userId])
     return result;
 }
 const selectById = async (teamId) => {
