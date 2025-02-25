@@ -2,7 +2,7 @@ const pool = require('../config/db')
 const teamImage = '../images/team.jpg'
 
 const selectAll = async (userId) => {
-    [result] = await pool.query("select * from teams where owner = ?", [userId])
+    [result] = await pool.query("SELECT * FROM usersTeams ut JOIN teams t on t.Id = ut.TeamID where ut.UserID = ?", [userId])
     return result;
 }
 const selectById = async (teamId) => {
