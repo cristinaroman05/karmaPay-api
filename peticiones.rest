@@ -1,4 +1,5 @@
-@host = https://karmapay-api.onrender.com
+# @host = https://karmapay-api.onrender.com
+@host = http://localhost:3000
 
 
 GET {{host}}/api/users/team/1
@@ -45,7 +46,7 @@ DELETE  {{host}}/api/users/3
 
 
 GET {{host}}/api/teams
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJpYXQiOjE3NDA0ODQzODR9.AFyPp3fvC45pWxoqdHTyabaIIH4pJPzSWwKQSMG--ig
 
 ###
 GET {{host}}/api/teams/3
