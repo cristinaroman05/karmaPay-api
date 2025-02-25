@@ -33,7 +33,7 @@ const selectByName = async (expenseName, teamId) => {
 
 const selectAssignation = async ({ expenseId, userId }) => {
     const [result] = await pool.query(
-        "SELECT Assignation FROM UsersExpenses WHERE ExpenseID = ? AND UserID = ?",
+        "SELECT Assignation FROM usersExpenses WHERE ExpenseID = ? AND UserID = ?",
         [expenseId, userId]
     );
     if (result.length === 0) return 0
@@ -48,7 +48,7 @@ const addExpense = async ({ name, amount, userIdCreator, teamId }) => {
     return result;
 };
 const addAssignation = async ({ assignation, expenseId, userId }) => {
-    const [result] = await pool.query("INSERT INTO UsersExpenses (Assignation, ExpenseID, UserID) VALUES (?, ?, ?)",
+    const [result] = await pool.query("INSERT INTO usersExpenses (Assignation, ExpenseID, UserID) VALUES (?, ?, ?)",
         [assignation, expenseId, userId,])
     return result;
 }
@@ -69,7 +69,7 @@ const deleteById = async (expenseId) => {
 }
 
 const selectAllByUser = async (userId) => {
-    const [result] = await pool.query("SELECT et.ExpenseID , u.Username, et.Assignation FROM UsersExpenses et JOIN users u ON et.UserID = u.Id WHERE et.UserID = ?", [userId]);
+    const [result] = await pool.query("SELECT et.ExpenseID , u.Username, et.Assignation FROM usersExpenses et JOIN users u ON et.UserID = u.Id WHERE et.UserID = ?", [userId]);
     return result;
 };
 
@@ -79,7 +79,7 @@ const selectAllByTeam = async (teamId) => {
 };
 
 const getDebt = async (userId, teamId) => {
-    const [result] = await pool.query("SELECT ue.UserID, SUM(ue.Assignation) AS Debes FROM expenses e JOIN usersexpenses ue ON e.Id = ue.ExpenseID WHERE e.TeamID = ? and ue.UserId = ? GROUP BY ue.UserID; ", [userId, teamId]);
+    const [result] = await pool.query("SELECT ue.UserID, SUM(ue.Assignation) AS Debes FROM expenses e JOIN usersExpenses ue ON e.Id = ue.ExpenseID WHERE e.TeamID = ? and ue.UserId = ? GROUP BY ue.UserID; ", [userId, teamId]);
     return result
 };
 

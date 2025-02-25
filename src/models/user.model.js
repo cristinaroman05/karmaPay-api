@@ -2,7 +2,7 @@ const pool = require('../config/db')
 const profileImage = '../images/iconoPerfil.png'
 
 const selectAll = async (teamId) => {
-    [result] = await pool.query("select u.Id, u.Username, u.Mail, u.Img from UsersTeams ut join Users u ON ut.UserID = u.Id where ut.TeamID = ?", [teamId])
+    [result] = await pool.query("select u.Id, u.Username, u.Mail, u.Img from usersTeams ut join users u ON ut.UserID = u.Id where ut.TeamID = ?", [teamId])
     return result;
 }
 const selectById = async (userId) => {
@@ -11,7 +11,7 @@ const selectById = async (userId) => {
     return result[0]
 }
 const selectByName = async (userName, teamId) => {
-    [result] = await pool.query("select u.* from users u join usersteams ut on u.Id = ut.UserID join teams t on ut.TeamID = t.Id where u.username LIKE ? AND t.id = ? ", [`%${userName}%`, teamId])
+    [result] = await pool.query("select u.* from users u join usersTeams ut on u.Id = ut.UserID join teams t on ut.TeamID = t.Id where u.username LIKE ? AND t.id = ? ", [`%${userName}%`, teamId])
     if (result.length === 0) return null
     return result
 

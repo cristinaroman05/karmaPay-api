@@ -25,7 +25,7 @@ const addTeam = async ({ name, description, category }, ownerId) => {
     return result
 }
 const addUserTeam = async (userId, teamId) => {
-    const [result] = await pool.query("insert into UsersTeams (userId, teamId, active) values (?,?, ?)", [userId, teamId, true])
+    const [result] = await pool.query("insert into usersTeams (userId, teamId, active) values (?,?, ?)", [userId, teamId, true])
     return result[0]
 }
 const updateById = async (teamId, { name, description, category, img }) => {
