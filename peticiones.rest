@@ -1,4 +1,4 @@
-@host = http://localhost:3000
+@host = https://karmapay-api.onrender.com
 
 
 GET {{host}}/api/users/team/1
@@ -6,10 +6,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTcz
 
 ###
 GET {{host}}/api/users/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/users/name/alex/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 ###
 GET {{host}}/api/users/mail/fede@gmail.com
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTczOTc5ODEyMH0.D6bCoGwCEJ1tiJ0Dsl106GwQpfIVYAWb55zQDmLi7bE
 
 ###
 GET {{host}}/api/expenses/getDebt/3/2
